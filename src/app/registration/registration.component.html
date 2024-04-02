@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login & Registration Form</title>
+    <link rel="stylesheet" href="registration.component.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- registration container -->
+
+        <div class="registration form">
+            <header>Signup</header>
+            <form action="#" id="registationForm">
+                <input id="reg-username" type="text" placeholder="Enter your name" required name="reg-name"
+                    [(ngModel)]="models.user.userName">
+                <input type="email" placeholder="Enter your email" id="reg-email" name="reg-email"
+                    [(ngModel)]="models.user.userEmail">
+                <input type="password" placeholder="Create a password" id="reg-password" name="reg-password"
+                    [(ngModel)]="models.user.password">
+                <input type="password" placeholder="Confirm your password" name="reg-password">
+                <input id="registrationButton" type="submit" class="button" value="Sing Up" (click)="registration()">
+            </form>
+            <div class="signup">
+                <span class="signup" routerLink="/login">Already have an account?
+                    <label>Login</label>
+                </span>
+            </div>
+
+        </div>
+
+        <!-- registration container -->
+
+    </div>
+
+    <!-- Include your separate JavaScript file -->
+
+</body>
+
+</html>

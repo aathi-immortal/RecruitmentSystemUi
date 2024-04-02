@@ -8,12 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegistrationComponent } from './registration/registration.component';
 
-
+import {HttpClientModule} from '@angular/common/http'
 const routes:Routes = [
   {path:"",component:HomeComponent},
   {path:"login",component:LoginComponent},
-   
+  {path:"dashboard",component:DashboardComponent},
+  {path:"registration",component:RegistrationComponent}
 ]
 
 @NgModule({
@@ -21,13 +24,16 @@ const routes:Routes = [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    DashboardComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(routes) 
+    RouterModule.forRoot(routes) ,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

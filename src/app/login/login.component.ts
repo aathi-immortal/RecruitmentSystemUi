@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthserviceService } from '../services/auth/authservice.service';
+import { ModelsService, User } from '../model/models.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,45 +10,40 @@ import { AuthserviceService } from '../services/auth/authservice.service';
 })
 export class LoginComponent {
 
-  constructor(public auth:AuthserviceService)
+  constructor(public auth:AuthserviceService,public models:ModelsService,private router:Router)
   {
 
   }
-  user:User = 
-  {
-    userName: "",
-    userEmail:" ",
-    password:"",
-
+  
+  validate(data: User) {
+    if(data.message == "success")
+    {
+      sessionStorage.setItem("token","token");
+      this.router.navigate(["/dashboard"]);
+    }
+    
   }
-
+  
   login()
   {
-    console.log("login");
     
-      console.log("userName :" + this.user.userName);
-      console.log("email :" + this.user.userEmail);
-      console.log("password :" + this.user.password);
-      this.auth.login();
+    
+      
+      this.auth.login(this.models.user.userName,this.models.user.userEmail,this.models.user.password)
+      .subscribe(
+        {
+          next:data=>
+          {
+            console.log(data);
+            
+              this.validate(data);
+          }
+        }
+      );
       
   }
 
-  registration()
-  {
-    console.log("registation");
-    
-    console.log("userName :" + this.user.userName);
-    console.log("email :" + this.user.userEmail);
-    console.log("password :" + this.user.password);
-  }
   
 }
 
-interface User
-{
-  userName:string;
-  userEmail:string;
-  password:string,
-    
-  
-}
+
