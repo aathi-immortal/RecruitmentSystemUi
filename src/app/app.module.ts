@@ -11,12 +11,22 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistrationComponent } from './registration/registration.component';
 
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { AddJobComponent } from './add-job/add-job.component';
+import { ViewJobComponent } from './view-job/view-job.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component'
 const routes:Routes = [
   {path:"",component:HomeComponent},
   {path:"login",component:LoginComponent},
-  {path:"dashboard",component:DashboardComponent},
-  {path:"registration",component:RegistrationComponent}
+  {path:"dashboard",component:HomeComponent},
+  {path:"registration",component:RegistrationComponent},
+  {path:"home",component:HomeComponent},
+  {path:"addjob",component:AddJobComponent},
+  {path:"viewjob",component:ViewJobComponent},
+  {path:"updateprofile",component:UpdateProfileComponent},
+  {path:"viewjob",component:ViewJobComponent}
+
+  
 ]
 
 @NgModule({
@@ -26,7 +36,10 @@ const routes:Routes = [
     LoginComponent,
     NavbarComponent,
     DashboardComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AddJobComponent,
+    ViewJobComponent,
+    UpdateProfileComponent
   ],
   imports: [
     BrowserModule,

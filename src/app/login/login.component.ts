@@ -10,40 +10,39 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(public auth:AuthserviceService,public models:ModelsService,private router:Router)
-  {
+  constructor(public auth: AuthserviceService, public models: ModelsService, private router: Router) {
 
   }
-  
+
   validate(data: User) {
-    if(data.message == "success")
-    {
-      sessionStorage.setItem("token","token");
+    if (data.message == "success") {
+      sessionStorage.setItem("token", "token");
+      sessionStorage.setItem("admin",data.isCompany)
+      sessionStorage.setItem("user_id",data.id.toString())
       this.router.navigate(["/dashboard"]);
     }
-    
+
   }
-  
-  login()
-  {
+
+  login() {
+
+
+    console.log("login");
     
-    
-      
-      this.auth.login(this.models.user.userName,this.models.user.userEmail,this.models.user.password)
+    this.auth.login(this.models.user.userName, this.models.user.userEmail, this.models.user.password)
       .subscribe(
         {
-          next:data=>
-          {
+          next: data => {
             console.log(data);
-            
-              this.validate(data);
+
+            this.validate(data);
           }
         }
       );
-      
+
   }
 
-  
+
 }
 
 

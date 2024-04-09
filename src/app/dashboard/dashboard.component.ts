@@ -15,7 +15,7 @@ export class DashboardComponent {
   }
   ngOnInit()
   {
-      this.auth.canAccess();
+      // this.auth.canAccess();
   }
 
 
