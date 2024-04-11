@@ -50,3 +50,9 @@ export interface Job
   skill:string,
   noticePeriod:string
 }
+export interface AbstartUser
+{
+  id:number,
+  userName:string;
+  email:string;
+}

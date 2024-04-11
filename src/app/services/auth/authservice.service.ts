@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Job, User } from 'src/app/model/models.service';
+import { AbstartUser, Job, User } from 'src/app/model/models.service';
 
 
 
@@ -9,24 +9,38 @@ import { Job, User } from 'src/app/model/models.service';
   providedIn: 'root'
 })
 export class AuthserviceService {
+  getRegisteredUsers(jobId: number) {
+    return this.http.post<AbstartUser[]>("http://localhost:8080/getRegisteredUsers",jobId);
+  }
+  getRegisteredJobs() {
+    return this.http.post<Job[]>("http://localhost:8080/getMyJobs",this.getUserId());
+  }
+  jobApply(jobId: number) {
+      return this.http.post("http://localhost:8080/applyJob",{ user_id:this.getUserId(),job_id:jobId});
+  }
   removeJob(jobId:number) {
     
     return this.http.post("http://localhost:8080/removeJob",jobId);
   }
 
 
-
+getUserId():number
+{
+  const userIdString:string |null =  sessionStorage.getItem("user_id");
+  var id:number = 0;
+  if (userIdString !== null) {
+    id = parseInt(userIdString);
+  } else {
+   
+  }
+  return id;
+}
 
   getJobs() {
-    const userIdString:string |null =  sessionStorage.getItem("user_id");
-    var id:number = 0;
-    if (userIdString !== null) {
-      id = parseInt(userIdString);
-    } else {
-     
-    }
     
-    return this.http.post<Job[]>("http://localhost:8080/getJob",id);
+    if(this.isAdmin())
+      return this.http.post<Job[]>("http://localhost:8080/getJob",this.getUserId());
+    return this.http.post<Job[]>("http://localhost:8080/getAllJobs",this.getUserId());
   }
   
 

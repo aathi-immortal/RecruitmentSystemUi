@@ -14,7 +14,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AddJobComponent } from './add-job/add-job.component';
 import { ViewJobComponent } from './view-job/view-job.component';
-import { UpdateProfileComponent } from './update-profile/update-profile.component'
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
+import { AppliedUsersComponent } from './applied-users/applied-users.component'
 const routes:Routes = [
   {path:"",component:HomeComponent},
   {path:"login",component:LoginComponent},
@@ -24,7 +26,9 @@ const routes:Routes = [
   {path:"addjob",component:AddJobComponent},
   {path:"viewjob",component:ViewJobComponent},
   {path:"updateprofile",component:UpdateProfileComponent},
-  {path:"viewjob",component:ViewJobComponent}
+  {path:"viewjob",component:ViewJobComponent},
+  {path:"registerJob",component:AppliedJobsComponent},
+  {path:"viewRegUsers/:jobId",component:AppliedUsersComponent}
 
   
 ]
@@ -39,7 +43,10 @@ const routes:Routes = [
     RegistrationComponent,
     AddJobComponent,
     ViewJobComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    AppliedJobsComponent,
+    AppliedUsersComponent
+
   ],
   imports: [
     BrowserModule,

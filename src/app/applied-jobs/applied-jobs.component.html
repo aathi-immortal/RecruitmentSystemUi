@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Job Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Job ID</th>
+                <th>Job Name</th>
+                <th>Job Salary Range</th>
+                <th>Years of Skill</th>
+                <th>Number of Registration</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let job of jobList">
+                <td>{{ job.jobId }}</td>
+                <td>{{ job.jobName }}</td>
+                <td>{{ job.jobSalary }}</td>
+                <td>{{ job.yearOfSkill }}</td>
+                <td>3</td>
+                <td>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

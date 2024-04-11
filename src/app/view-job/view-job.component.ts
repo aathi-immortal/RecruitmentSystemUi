@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthserviceService } from '../services/auth/authservice.service';
-import { Job, ModelsService } from '../model/models.service';
+import { AbstartUser, Job, ModelsService } from '../model/models.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-job',
@@ -11,12 +12,12 @@ export class ViewJobComponent {
 
 
    jobList:Job[] = [];
-thi: any;
+   userList:AbstartUser[] = [];
   ngOnInit()
   {
       this.getJob();
   }
-  constructor(public auth:AuthserviceService,public model:ModelsService)
+  constructor(public auth:AuthserviceService,public model:ModelsService,public router:Router)
   {
       
   }
@@ -32,16 +33,41 @@ thi: any;
       
     )
   } 
+  
+  viewJob(jobId: number) {
+    this.router.navigate(["viewRegUsers",jobId]);
+}
   removeJob(jobId: number) {
+    
     this.auth.removeJob(jobId).subscribe(
       {
         next:data =>
           {
-
+            this.getJob();
           }
       }
     )
     
   }
+
+  jobApply(jobId: number) {
+    
+    this.auth.jobApply(jobId).subscribe(
+      {
+        next:data =>
+          {
+            this.getJob();            
+          }
+      }
+    )
   
-}
+  } 
+
+  
+  
+  }
+
+
+    
+  
+
