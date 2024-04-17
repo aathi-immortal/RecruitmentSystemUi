@@ -1,28 +1,33 @@
-<div class="container">
-    <h2>Job Table</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>userId</th>
-                <th>userName</th>
-                <th>userEmail</th>
-
-            </tr>
-        </thead>
-        <tbody>
-
-            <tr *ngFor="let user of userList">
-                <td>{{user.id}}</td>
-                <td>{{user.userName}}</td>
-                <td>{{user.email}}</td>
+<body>
 
 
+    <div class="container">
+        <h2>Job Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>userId</th>
+                    <th>userName</th>
+                    <th>userEmail</th>
+                    <th>resume</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let user of userList">
+                    <td>{{user.id}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.email}}</td>
+                    <td><button class="update-btn" routerLink="/resumeView">download</button></td>
+                    <td><button class="update-btn" (click)="this.sendMail(user.email)">Email</button></td>
 
 
 
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
 
 
-</div>
+    </div>
+
+</body>

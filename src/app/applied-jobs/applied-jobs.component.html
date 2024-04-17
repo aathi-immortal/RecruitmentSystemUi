@@ -1,31 +1,39 @@
-<div class="container">
-    <h2>Job Table</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Job ID</th>
-                <th>Job Name</th>
-                <th>Job Salary Range</th>
-                <th>Years of Skill</th>
-                <th>Number of Registration</th>
-
-            </tr>
-        </thead>
-        <tbody>
-
-            <tr *ngFor="let job of jobList">
-                <td>{{ job.jobId }}</td>
-                <td>{{ job.jobName }}</td>
-                <td>{{ job.jobSalary }}</td>
-                <td>{{ job.yearOfSkill }}</td>
-                <td>3</td>
-                <td>
+<body>
+    <div class="container">
+        <h2>Job Table</h2>
+        <ng-container *ngIf="jobList.length == 0;then empty;else jobSelected "></ng-container>
+        <ng-template #jobSelected>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Job Name</th>
+                        <th>Job Salary Range</th>
+                        <th>Years of Skill</th>
 
 
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let job of jobList">
+                        <td>{{ job.jobId }}</td>
+                        <td>{{ job.jobName }}</td>
+                        <td>{{ job.jobSalary }}</td>
+                        <td>{{ job.yearOfSkill }}</td>
+                        <td></td>
+                        <td>
 
 
-</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </ng-template>
+        <ng-template #empty>
+
+        </ng-template>
+
+    </div>
+</body>

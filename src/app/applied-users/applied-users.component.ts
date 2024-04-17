@@ -9,6 +9,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./applied-users.component.css']
 })
 export class AppliedUsersComponent {
+sendMail(email:string) {
+    
+  this.auth.sendEmail(email, "goole").subscribe(
+    (response) => {
+      console.log('Email sent successfully:', response);
+    },
+    (error) => {
+      console.error('Failed to send email:', error);
+    }
+  );
+}
 
   constructor(public auth:AuthserviceService,public router:ActivatedRoute)
   {

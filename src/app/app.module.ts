@@ -16,7 +16,8 @@ import { AddJobComponent } from './add-job/add-job.component';
 import { ViewJobComponent } from './view-job/view-job.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
-import { AppliedUsersComponent } from './applied-users/applied-users.component'
+import { AppliedUsersComponent } from './applied-users/applied-users.component';
+import { ResumeComponent } from './resume/resume.component'
 const routes:Routes = [
   {path:"",component:HomeComponent},
   {path:"login",component:LoginComponent},
@@ -28,8 +29,8 @@ const routes:Routes = [
   {path:"updateprofile",component:UpdateProfileComponent},
   {path:"viewjob",component:ViewJobComponent},
   {path:"registerJob",component:AppliedJobsComponent},
-  {path:"viewRegUsers/:jobId",component:AppliedUsersComponent}
-
+  {path:"viewRegUsers/:jobId",component:AppliedUsersComponent},
+  {path:"resumeView",component:ResumeComponent}
   
 ]
 
@@ -45,7 +46,8 @@ const routes:Routes = [
     ViewJobComponent,
     UpdateProfileComponent,
     AppliedJobsComponent,
-    AppliedUsersComponent
+    AppliedUsersComponent,
+    ResumeComponent
 
   ],
   imports: [

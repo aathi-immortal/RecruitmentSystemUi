@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstartUser, Job, User } from 'src/app/model/models.service';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
 
 
 
@@ -9,6 +12,27 @@ import { AbstartUser, Job, User } from 'src/app/model/models.service';
   providedIn: 'root'
 })
 export class AuthserviceService {
+  sendEmail(email: string, dummyUrl: string): Observable<any> {
+    const url = `https://webappbuild.azurewebsites.net/api/League/InvitePlayer?email=${encodeURIComponent(email)}&url=${encodeURIComponent(dummyUrl)}`;
+    return this.http.get(url);
+  }
+
+
+  getImage(): Observable<Blob> {
+    const url = `http://localhost:8080/getResume?userId=${this.getUserId()}`;
+    return this.http.get(url, { responseType: 'blob' }).pipe(
+      catchError((error: any) => {
+        console.error(error);
+        return throwError('Failed to fetch image');
+      })
+    );
+  }
+  upload(file:any) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('user_id', this.getUserId().toString());
+    return this.http.post<any>('http://localhost:8080/upload', formData);
+  }
   getRegisteredUsers(jobId: number) {
     return this.http.post<AbstartUser[]>("http://localhost:8080/getRegisteredUsers",jobId);
   }

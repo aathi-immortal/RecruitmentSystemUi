@@ -1,63 +1,65 @@
-<div class="container">
-    <h2>Job Table</h2>
-    <ng-container *ngIf="this.auth.isAdmin() then adminView;else userView">
+<body>
+    <div class="container">
+        <h2>Job Table</h2>
+        <ng-container *ngIf="this.auth.isAdmin() then adminView;else userView">
 
-    </ng-container>
-    <ng-template #adminView>
-        <table>
-            <thead>
-                <tr>
-                    <th>Job ID</th>
-                    <th>Job Name</th>
-                    <th>Job Salary Range</th>
-                    <th>Years of Skill</th>
-                    <th>Number of Registration</th>
-                    <th>Actions</th>
+        </ng-container>
+        <ng-template #adminView>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Job Name</th>
+                        <th>Job Salary Range</th>
+                        <th>Years of Skill</th>
+                        <th>Number of Registration</th>
+                        <th>Actions</th>
 
-                </tr>
-            </thead>
-            <tbody>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <tr *ngFor="let job of jobList">
-                    <td>{{ job.jobId }}</td>
-                    <td>{{ job.jobName }}</td>
-                    <td>{{ job.jobSalary }}</td>
-                    <td>{{ job.yearOfSkill }}</td>
-                    <td>3</td>
-                    <td>
-                        <button class="btn btn-primary" (click)="viewJob(job.jobId)">View</button>
-                        <button class="delete-btn" (click)="this.removeJob(job.jobId)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </ng-template>
-    <ng-template #userView>
-        <table>
-            <thead>
-                <tr>
-                    <th>Job ID</th>
-                    <th>Job Name</th>
-                    <th>Skills Required</th>
-                    <th>Job Salary Range</th>
-                    <th>Years of Skill</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let job of jobList">
-                    <td>{{job.jobId}}</td>
-                    <td>{{job.jobName}}</td>
-                    <td>{{job.skill}}</td>
-                    <td>{{job.jobSalary}}</td>
-                    <td>{{job.yearOfSkill}}</td>
-                    <td>
-                        <button class="update-btn" (click)="this.jobApply(job.jobId)">Apply</button>
-                    </td>
-                </tr>
+                    <tr *ngFor="let job of jobList">
+                        <td>{{ job.jobId }}</td>
+                        <td>{{ job.jobName }}</td>
+                        <td>{{ job.jobSalary }}</td>
+                        <td>{{ job.yearOfSkill }}</td>
+                        <td>3</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="viewJob(job.jobId)">View</button>
+                            <button class="delete-btn" (click)="this.removeJob(job.jobId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+        <ng-template #userView>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Job Name</th>
+                        <th>Skills Required</th>
+                        <th>Job Salary Range</th>
+                        <th>Years of Skill</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let job of jobList">
+                        <td>{{job.jobId}}</td>
+                        <td>{{job.jobName}}</td>
+                        <td>{{job.skill}}</td>
+                        <td>{{job.jobSalary}}</td>
+                        <td>{{job.yearOfSkill}}</td>
+                        <td>
+                            <button class="update-btn" (click)="this.jobApply(job.jobId)">Apply</button>
+                        </td>
+                    </tr>
 
-                <!-- Add more rows as needed -->
-            </tbody>
-        </table>
-    </ng-template>
-</div>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </ng-template>
+    </div>
+</body>
