@@ -19,7 +19,7 @@ export class AuthserviceService {
 
 
   getImage(): Observable<Blob> {
-    const url = `http://localhost:8080/getResume?userId=${this.getUserId()}`;
+    const url = `recuritmentsystem.azurewebsites.net/getResume?userId=${this.getUserId()}`;
     return this.http.get(url, { responseType: 'blob' }).pipe(
       catchError((error: any) => {
         console.error(error);
@@ -31,20 +31,20 @@ export class AuthserviceService {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('user_id', this.getUserId().toString());
-    return this.http.post<any>('http://localhost:8080/upload', formData);
+    return this.http.post<any>('recuritmentsystem.azurewebsites.net/upload', formData);
   }
   getRegisteredUsers(jobId: number) {
-    return this.http.post<AbstartUser[]>("http://localhost:8080/getRegisteredUsers",jobId);
+    return this.http.post<AbstartUser[]>("recuritmentsystem.azurewebsites.net/getRegisteredUsers",jobId);
   }
   getRegisteredJobs() {
-    return this.http.post<Job[]>("http://localhost:8080/getMyJobs",this.getUserId());
+    return this.http.post<Job[]>("recuritmentsystem.azurewebsites.net/getMyJobs",this.getUserId());
   }
   jobApply(jobId: number) {
-      return this.http.post("http://localhost:8080/applyJob",{ user_id:this.getUserId(),job_id:jobId});
+      return this.http.post("recuritmentsystem.azurewebsites.net/applyJob",{ user_id:this.getUserId(),job_id:jobId});
   }
   removeJob(jobId:number) {
     
-    return this.http.post("http://localhost:8080/removeJob",jobId);
+    return this.http.post("recuritmentsystem.azurewebsites.net/removeJob",jobId);
   }
 
 
@@ -63,8 +63,8 @@ getUserId():number
   getJobs() {
     
     if(this.isAdmin())
-      return this.http.post<Job[]>("http://localhost:8080/getJob",this.getUserId());
-    return this.http.post<Job[]>("http://localhost:8080/getAllJobs",this.getUserId());
+      return this.http.post<Job[]>("recuritmentsystem.azurewebsites.net/getJob",this.getUserId());
+    return this.http.post<Job[]>("recuritmentsystem.azurewebsites.net/getAllJobs",this.getUserId());
   }
   
 
@@ -100,7 +100,7 @@ getUserId():number
   login(name:string,email:string,password:string)
   {
     
-    return this.http.post<User>("http://localhost:8080/login",{id:"",userName:name,email,password,message:""})
+    return this.http.post<User>("recuritmentsystem.azurewebsites.net/login",{id:"",userName:name,email,password,message:""})
   }
   logout()
   {
@@ -110,7 +110,7 @@ getUserId():number
   register(name:string,email:string,password:string)
   {
     
-      return this.http.post<User>("http://localhost:8080/registration",{id:"",userName:name,email,password,message:""});
+      return this.http.post<User>("recuritmentsystem.azurewebsites.net/registration",{id:"",userName:name,email,password,message:""});
   }
 
 
@@ -130,7 +130,7 @@ getUserId():number
     }
      
       
-    return this.http.post<any>("http://localhost:8080/addJob",{
+    return this.http.post<any>("recuritmentsystem.azurewebsites.net/addJob",{
       "jobId": 1,
       "jobName": job.jobName,
       "jobSalary": job.jobSalary,
