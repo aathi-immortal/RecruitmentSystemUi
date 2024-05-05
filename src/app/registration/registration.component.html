@@ -17,14 +17,27 @@
 
         <div class="registration form">
             <header>Signup</header>
-            <form action="#" id="registationForm">
+            <form action="#" id="registationForm" #form="ngForm" novalidate>
                 <input id="reg-username" type="text" placeholder="Enter your name" required name="reg-name"
-                    [(ngModel)]="models.user.userName">
-                <input type="email" placeholder="Enter your email" id="reg-email" name="reg-email"
-                    [(ngModel)]="models.user.userEmail">
+                    [(ngModel)]="models.user.userName" #namee="ngModel">
+                <span class="text-danger" *ngIf="submit && namee.errors?.['required']">
+                    name is required
+                </span>
+
+                <input type="email" placeholder="Enter your email" id="reg-email" name="reg-email" required
+                    [(ngModel)]="models.user.userEmail" #email="ngModel">
+                <span class="text-danger" *ngIf="submit && email.errors?.['required']">
+                    email is required
+                </span>
                 <input type="password" placeholder="Create a password" id="reg-password" name="reg-password"
                     [(ngModel)]="models.user.password">
+                <span class="text-danger">
+                    password must be minimum 8 character
+                </span>
                 <input type="password" placeholder="Confirm your password" name="reg-password">
+                <span class="text-danger">
+                    password not match
+                </span>
                 <input id="registrationButton" type="submit" class="button" value="Sing Up" (click)="registration()">
             </form>
             <div class="signup">

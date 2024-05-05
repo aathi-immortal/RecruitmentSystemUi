@@ -126,7 +126,7 @@ body {
     width: calc(100% - 30px);
     padding: 0 15px;
     font-size: 16px;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
     border: none;
     border-radius: 25px;
     outline: none;
@@ -185,4 +185,11 @@ body {
 .signup label:hover {
     color: #04a64a;
     text-decoration: underline;
+}
+.text-danger
+{
+  margin-bottom: 1rem;
+  color:red;
+  font-size: small;
+  
 }

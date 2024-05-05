@@ -9,6 +9,7 @@ import { ModelsService, User } from '../model/models.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
+submit: boolean = false;
 
 constructor(private auth:AuthserviceService,private router:Router,public models:ModelsService)
 {
@@ -22,6 +23,7 @@ constructor(private auth:AuthserviceService,private router:Router,public models:
     // console.log("userName :" + this.user.userName);
     // console.log("email :" + this.user.userEmail);
     // console.log("password :" + this.user.password);
+    this.submit = true;
     this.auth.register(this.models.user.userName,this.models.user.userEmail,this.models.user.password)
     .subscribe({
       next:data=>
